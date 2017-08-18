@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-8"></div>
+    <div class="col-4">
+        <a href="/ideas">Bright Ideas</a> |
+        <a href="/logout" data-method="delete">Logout</a>
+
+    </div>
+</div>
+
+<h3>Name: <%= @user.name %></h3>
+<h3>Alias: <%= @user.alias %></h3>
+<h3>Email: <%= @user.email %></h3>
+
+<hr>
+<h4>Total Number of Posts: <%= @user.ideas.count %></h4>
+<h4>Total Number of Likes: <%= @user.liked_ideas.count %></h4>

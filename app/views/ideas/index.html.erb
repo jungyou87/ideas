@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h2>Hi  <%= @user.name %> ! </h2>
+    </div>
+    
+    <div class="col-1">
+        <a href="/logout" data-method="delete">Logout</a>
+
+    </div>
+</div>
+
+    <!-- ADD IDEA -->
+<hr>
+<div>
+
+    <form action="/ideas" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <textarea name="idea[idea]" id="idea" cols="60" rows="5"></textarea>
+        <p><button type="submit" class="btn btn-primary">Idea!</button></p>
+
+    </form>
+</div>
+
+<hr>
+<!-- IDEAS -->
+
+<% @ideas.each do |idea| %>
+<div class=row>
+    <div class="col-2">
+        <p><a href="/users/<%= idea.user.id %>"><%= idea.user.name %></a> says: </p>
+    </div>
+    <div class="col-4">
+        <p> <%= idea.idea %></p>
+          <form action="/ideas/<%= idea.id %>/likes" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <button class="btn btn-primary" type="submit">Like</button>
+          </form>
+        <p>
+            <a href="/ideas/<%= idea.id %>"><%= idea.liked_users.count %> people</a> liked this
+        </p>
+    </div>
+    <div class="col-2"></div>
+
+        
+
+</div>
+<% end %>
