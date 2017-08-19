@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ideas_production
-  username: ideas
+  username: ubuntu
   password: <%= ENV['IDEAS_DATABASE_PASSWORD'] %>
